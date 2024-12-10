@@ -12,6 +12,21 @@ public class App {
         double[] punteggio = { 0, 0 };
         String cont;
         boolean[] mazzo = new boolean[40];
+        double budget, puntata;
+        budget = 100;
+        
+
+        do {
+            System.out.println("Quanto vuoi puntare?");
+        puntata = sc.nextDouble();
+        sc.nextLine();
+        if (puntata<=0 || puntata>budget) {
+            System.out.println("Puntata non valida!");
+        }
+        } while (puntata<=0 || puntata>budget);
+        
+        
+
         for (int i = 0; i < 2; i++) {
             if (i == 0) {
                 System.out.println(" \n E' il turno del giocatore");
@@ -24,7 +39,7 @@ public class App {
                 do {
                     nCarta = rnd.nextInt(10) + 1;
                     seme = rnd.nextInt(4);
-                    index = (seme*10) + nCarta-1;
+                    index = (seme * 10) + nCarta - 1;
                 } while (mazzo[index]);
                 mazzo[index] = true;
                 System.out.println(index);
@@ -49,15 +64,18 @@ public class App {
                     }
                 }
 
-            } while (true);  //punteggio[i] <= 7.50 && cont.equalsIgnoreCase("S")
+            } while (punteggio[i] <= 7.50 && cont.equalsIgnoreCase("S"));
         }
         System.out.println();
         if (punteggio[0] <= 7.50 && punteggio[0] > punteggio[1]) {
 
             System.out.println("Hai vinto!");
+            budget = budget+puntata;
 
-        } else
+        } else {
             System.out.println("Hai perso!");
+            budget = budget - puntata;
+        }
 
     }
 }
