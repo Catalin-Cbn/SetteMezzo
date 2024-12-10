@@ -5,22 +5,23 @@ public class App {
     public static void main(String[] args) throws Exception {
         Random rnd = new Random();
         Scanner sc = new Scanner(System.in);
-
+        int seme;
         System.out.println("Sette e mezzo.");
-
+        String[] semi = {"denari", "bastoni", "coppe", "spade"};
         int nCarta;
         double[] punteggio = { 0, 0 };
         String cont;
         for (int i = 0; i < 2; i++) {
             if (i == 0) {
-                System.out.println("E' il turno del giocatore");
+                System.out.println(" \n E' il turno del giocatore");
             } else {
-                System.out.println("E' il turno del banco");
+                System.out.println("\n E' il turno del banco");
             }
             do {
                 cont = "N";
                 nCarta = rnd.nextInt(10) + 1;
-                System.out.println("Hai pescato " + nCarta);
+                seme = rnd.nextInt(4);
+                System.out.println("Hai pescato " + nCarta + " di " + semi[seme]);
                 if (nCarta <= 7) {
                     punteggio[i] = punteggio[i] + nCarta;
 
@@ -43,11 +44,14 @@ public class App {
 
             } while (punteggio[i] <= 7.50 && cont.equalsIgnoreCase("S"));
         }
+        System.out.println();
         if (punteggio[0] <= 7.50 && punteggio[0] > punteggio[1]) {
+        
             System.out.println("Hai vinto!");
 
         } else
             System.out.println("Hai perso!");
 
-    }
+
+    } 
 }
