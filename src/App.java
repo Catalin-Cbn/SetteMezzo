@@ -41,13 +41,29 @@ public class App {
                         index = (seme * 10) + nCarta - 1;
                     } while (mazzo[index]);
                     mazzo[index] = true;
+                    if (punteggio[i] != 0 && index == 9) {
+                        if (i == 0) {
+                            System.out.println("Che valore vuoi dare alla matta? (I valori non inclusi tra 1 e 7 valgono 0.5)");
+                            nCarta = sc.nextInt();
+                            sc.nextLine();
+                        } else {
+                            if (punteggio[i] == 7) {
+                                nCarta = 8;
+                            } else {
+                                nCarta = (int) (7 - punteggio[i]);
+
+                            }
+                        }
+                    }
+
                     System.out.println("Hai pescato " + nCarta + " di " + semi[seme]);
-                    if (nCarta <= 7) {
+                    if (nCarta <= 7 && nCarta > 0) {
                         punteggio[i] = punteggio[i] + nCarta;
 
                     } else {
                         punteggio[i] = punteggio[i] + 0.50;
                     }
+
                     System.out.println("Il punteggio attuale è: " + punteggio[i]);
                     if (i == 0) {
                         if (punteggio[0] <= 7.50) {
@@ -58,7 +74,6 @@ public class App {
                     } else {
                         if (punteggio[i] <= 4.50) {
                             cont = "S";
-
                         }
                     }
 
