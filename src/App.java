@@ -41,6 +41,7 @@ public class App {
                         index = (seme * 10) + nCarta - 1;
                     } while (mazzo[index]);
                     mazzo[index] = true;
+                    
                     if (punteggio[i] != 0 && index == 9) {
                         if (i == 0) {
                             System.out.println("Che valore vuoi dare alla matta? (I valori non inclusi tra 1 e 7 valgono 0.5)");
@@ -50,7 +51,7 @@ public class App {
                             if (punteggio[i] == 7) {
                                 nCarta = 8;
                             } else {
-                                nCarta = (int) (7 - punteggio[i]);
+                                nCarta = (int) (Math.ceil(7 - punteggio[i]));
 
                             }
                         }
